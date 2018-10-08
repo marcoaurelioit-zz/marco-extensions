@@ -5,22 +5,22 @@ using System.Linq;
 
 namespace Microsoft.Extensions.Configuration
 {
-    public static class MarcoExtensionsConfiguration
+    public static class ConfigurationExtensions
     {
-        public static T TryGet<T>(this IConfiguration configuration)
+        /// <summary>
+        /// Try to deserialize a configuration section into a predefined settings class; throws an exception if it fails.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="configuration"></param>
+        /// <exception cref="InvalidOperationException"></exception>
+        /// <returns></returns>
+        public static T TryGet<T>(this IConfiguration configuration) where T : class
         {
-            var typeName = typeof(T).Name;
-
-            if (configuration.GetChildren().Any(item => item.Key == typeName))
-                configuration = configuration.GetSection(typeName);
-
-            T model = configuration.Get<T>();
-
-            if (model == null)
+            var model = configuration.Get<T>() ??
                 throw new InvalidOperationException($"Configuration item not found for type {typeof(T).FullName}.");
 
+            var validationContext = new ValidationContext(model);
             var validationResults = new List<ValidationResult>();
-            var validationContext = new ValidationContext(model, serviceProvider: null, items: null);
 
             if (!Validator.TryValidateObject(model, validationContext, validationResults, true))
             {
