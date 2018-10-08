@@ -3,6 +3,7 @@
 [![GitHub release](https://img.shields.io/github/release/marcoaurelioit/marco-extensions.svg)](https://github.com/marcoaurelioit/marco-extensions/releases)
 
 # marco-extensions
+Common packages extensions methods.
 
 ## Nuget Packages
 ||Version|Downloads|
