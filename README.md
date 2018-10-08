@@ -9,6 +9,3 @@ Common packages extensions methods.
 ||Version|Downloads|
 |---------------------------|:---:|:---:|
 |**Marco.Extensions.Configuration**|[![NuGet](https://img.shields.io/nuget/v/Marco.Extensions.Configuration.svg)](https://www.nuget.org/packages/Marco.Extensions.Configuration/)|![NuGet](https://img.shields.io/nuget/dt/Marco.Extensions.Configuration.svg)|
-
-## Installation
-Install-Package Marco.Extensions.Configuration
