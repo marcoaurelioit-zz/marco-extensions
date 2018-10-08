@@ -13,12 +13,9 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-
-  #Pack1 -------------------
-  ##Marco.Extensions
   Pack1Version: '1.0.2'
   Pack1PushToNuget: False
-
+  
   steps:
 # Install NuGet Tool
 - task: NuGetToolInstaller@0
