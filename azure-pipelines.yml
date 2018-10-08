@@ -13,7 +13,7 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  PackVersion: '1.0.2'
+  PackVersion: '1.0.0'
   PackPushToNuget: True
 
 steps:
