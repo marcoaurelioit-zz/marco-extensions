@@ -1,7 +1,7 @@
 # marco-extensions
 
 ## Installation
-Install-Package Marco.Extensions -Version 1.0.0
+Install-Package Marco.Extensions
 
 ## Nuget Packages
 ||Version|Downloads|
