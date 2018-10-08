@@ -13,8 +13,8 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  Pack1Version: '1.0.2'
-  Pack1PushToNuget: False
+  PackVersion: '1.0.2'
+  PackPushToNuget: False
   
   steps:
 # Install NuGet Tool
@@ -59,15 +59,15 @@ variables:
 # Publish Marco.Extensions to NuGet.org
 - task: DotNetCoreCLI@2
   displayName: Pack Marco.Extensions
-  condition: eq(variables['Pack1PushToNuget'], 'True')
+  condition: eq(variables['PackPushToNuget'], 'True')
   inputs:
     command: pack
     packagesToPack: '**/**/Marco.Extensions.csproj'
     versioningScheme: byEnvVar
-    versionEnvVar: Pack1Version
+    versionEnvVar: PackVersion
 - task: NuGetCommand@2
   displayName: Push Marco.Extensions to NuGet.org
-  condition: eq(variables['Pack1PushToNuget'], 'True')
+  condition: eq(variables['PackPushToNuget'], 'True')
   continueOnError: True
   inputs:
     command: push
