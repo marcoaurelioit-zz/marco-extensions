@@ -1,5 +1,7 @@
 # marco-extensions
 
+## Installation
+Install-Package Marco.Extensions -Version 1.0.0
 
 ## Packages
 ||Version|Downloads|
