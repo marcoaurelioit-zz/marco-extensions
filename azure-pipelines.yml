@@ -15,7 +15,7 @@ variables:
   buildConfiguration: 'Release'
   PackVersion: '1.0.2'
   PackPushToNuget: False
-  
+
 steps:
 # Install NuGet Tool
 - task: NuGetToolInstaller@0
