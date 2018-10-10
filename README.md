@@ -3,11 +3,9 @@
 [![GitHub release](https://img.shields.io/github/release/marcoaurelioit/marco-extensions.svg)](https://github.com/marcoaurelioit/marco-extensions/releases)
 
 # marco-extensions
+Common packages extensions methods.
 
 ## Nuget Packages
 ||Version|Downloads|
 |---------------------------|:---:|:---:|
-|**Marco.Extensions**|[![NuGet](https://img.shields.io/nuget/v/Marco.Extensions.svg)](https://www.nuget.org/packages/Marco.Extensions/)|![NuGet](https://img.shields.io/nuget/dt/Marco.Extensions.svg)|
-
-## Installation
-Install-Package Marco.Extensions
+|**Marco.Extensions.Configuration**|[![NuGet](https://img.shields.io/nuget/v/Marco.Extensions.Configuration.svg)](https://www.nuget.org/packages/Marco.Extensions.Configuration/)|![NuGet](https://img.shields.io/nuget/dt/Marco.Extensions.Configuration.svg)|

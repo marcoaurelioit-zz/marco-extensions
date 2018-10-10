@@ -13,8 +13,8 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  PackVersion: '1.0.2'
-  PackPushToNuget: False
+  PackVersion: '1.0.0'
+  PackPushToNuget: True
 
 steps:
 # Install NuGet Tool
@@ -48,7 +48,7 @@ steps:
   inputs:
     command: publish
     publishWebProjects: False
-    projects: '**/**/Marco.Extensions.csproj'
+    projects: '**/**/Marco.Extensions.Configuration.csproj'
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: False
 
@@ -56,21 +56,21 @@ steps:
 - task: PublishBuildArtifacts@1
   displayName: Publish Artifacts
 
-# Publish Marco.Extensions to NuGet.org
+# Publish Marco.Extensions.Configuration to NuGet.org
 - task: DotNetCoreCLI@2
-  displayName: Pack Marco.Extensions
+  displayName: Pack Marco.Extensions.Configuration
   condition: eq(variables['PackPushToNuget'], 'True')
   inputs:
     command: pack
-    packagesToPack: '**/**/Marco.Extensions.csproj'
+    packagesToPack: '**/**/Marco.Extensions.Configuration.csproj'
     versioningScheme: byEnvVar
     versionEnvVar: PackVersion
 - task: NuGetCommand@2
-  displayName: Push Marco.Extensions to NuGet.org
+  displayName: Push Marco.Extensions.Configuration to NuGet.org
   condition: eq(variables['PackPushToNuget'], 'True')
   continueOnError: True
   inputs:
     command: push
     nuGetFeedType: external
-    packagesToPush: '$(build.artifactStagingDirectory)/Marco.Extensions.*.nupkg'
-    publishFeedCredentials: 'apikey-nuget-marco-extensions'
+    packagesToPush: '$(build.artifactStagingDirectory)/Marco.Extensions.Configuration.*.nupkg'
+    publishFeedCredentials: 'apikey-nuget-marco-configuration-extensions'
