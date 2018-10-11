@@ -96,4 +96,4 @@ steps:
     command: push
     nuGetFeedType: external
     packagesToPush: '$(build.artifactStagingDirectory)/Marco.Extensions.ConnectionStringBuilder.*.nupkg'
-    publishFeedCredentials: 'apikey-nuget-marco-connection-string-builder'
+    publishFeedCredentials: 'apikey-nuget-marcoconnectionstringbuilder'
