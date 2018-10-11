@@ -13,8 +13,14 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
+  
+  #Pack1 -----------------------------------
+  ##Marco.Extensions.Configuration
   Pack1Version: '1.0.0'
   Pack1PushToNuget: False
+  
+  #Pack2 -----------------------------------
+  ##Marco.Extensions.ConnectionStringBuilder
   Pack2Version: '1.0.0'
   Pack2PushToNuget: True
 
@@ -52,7 +58,7 @@ steps:
     publishWebProjects: False
     projects: '**/**/Marco.Extensions.*.csproj'
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-    zipAfterPublish: False  
+    zipAfterPublish: False
 
 # Publish the artifacts
 - task: PublishBuildArtifacts@1
@@ -76,7 +82,7 @@ steps:
     nuGetFeedType: external
     packagesToPush: '$(build.artifactStagingDirectory)/Marco.Extensions.Configuration.*.nupkg'
     publishFeedCredentials: 'apikey-nuget-marco-configuration-extensions'
-    
+
 # Publish Marco.Extensions.ConnectionStringBuilder to NuGet.org
 - task: DotNetCoreCLI@2
   displayName: Pack Marco.Extensions.ConnectionStringBuilder
