@@ -13,16 +13,8 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  
-  #Pack1 -----------------------------------
-  ##Marco.Extensions.Configuration
-  Pack1Version: '1.0.0'
-  Pack1PushToNuget: False
-  
-  #Pack2 -----------------------------------
-  ##Marco.Extensions.ConnectionStringBuilder
-  Pack2Version: '1.0.0'
-  Pack2PushToNuget: True
+  PackVersion: '1.0.0'
+  PackPushToNuget: True
 
 steps:
 # Install NuGet Tool
@@ -56,7 +48,7 @@ steps:
   inputs:
     command: publish
     publishWebProjects: False
-    projects: '**/**/Marco.Extensions.*.csproj'
+    projects: '**/**/Marco.Extensions.Configuration.csproj'
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: False
 
@@ -67,37 +59,18 @@ steps:
 # Publish Marco.Extensions.Configuration to NuGet.org
 - task: DotNetCoreCLI@2
   displayName: Pack Marco.Extensions.Configuration
-  condition: eq(variables['Pack1PushToNuget'], 'True')
+  condition: eq(variables['PackPushToNuget'], 'True')
   inputs:
     command: pack
     packagesToPack: '**/**/Marco.Extensions.Configuration.csproj'
     versioningScheme: byEnvVar
-    versionEnvVar: Pack1Version
+    versionEnvVar: PackVersion
 - task: NuGetCommand@2
   displayName: Push Marco.Extensions.Configuration to NuGet.org
-  condition: eq(variables['Pack1PushToNuget'], 'True')
+  condition: eq(variables['PackPushToNuget'], 'True')
   continueOnError: True
   inputs:
     command: push
     nuGetFeedType: external
     packagesToPush: '$(build.artifactStagingDirectory)/Marco.Extensions.Configuration.*.nupkg'
     publishFeedCredentials: 'apikey-nuget-marco-configuration-extensions'
-
-# Publish Marco.Extensions.ConnectionStringBuilder to NuGet.org
-- task: DotNetCoreCLI@2
-  displayName: Pack Marco.Extensions.ConnectionStringBuilder
-  condition: eq(variables['Pack2PushToNuget'], 'True')
-  inputs:
-    command: pack
-    packagesToPack: '**/**/Marco.Extensions.ConnectionStringBuilder.csproj'
-    versioningScheme: byEnvVar
-    versionEnvVar: Pack2Version
-- task: NuGetCommand@2
-  displayName: Push Marco.Extensions.ConnectionStringBuilder to NuGet.org
-  condition: eq(variables['Pack2PushToNuget'], 'True')
-  continueOnError: True
-  inputs:
-    command: push
-    nuGetFeedType: external
-    packagesToPush: '$(build.artifactStagingDirectory)/Marco.Extensions.ConnectionStringBuilder.*.nupkg'
-    publishFeedCredentials: 'apikey-nuget-marcoconnectionstringbuilder'
