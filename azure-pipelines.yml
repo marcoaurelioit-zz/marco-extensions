@@ -12,12 +12,10 @@ trigger:
 variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release' 
- 
+  buildConfiguration: 'Release'  
   # Marco.Extensions.Configuration
   Pack1Version: '1.0.0'
-  Pack1PushToNuget: False 
- 
+  Pack1PushToNuget: False  
   # Marco.Extensions.ConnectionStringBuilder
   Pack2Version: '1.0.0'
   Pack2PushToNuget: True
