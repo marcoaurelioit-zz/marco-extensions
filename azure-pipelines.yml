@@ -14,7 +14,7 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
   PackVersion: '1.0.0'
-  PackPushToNuget: True
+  PackPushToNuget: False
 
 steps:
 # Install NuGet Tool
